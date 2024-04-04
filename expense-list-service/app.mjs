@@ -11,16 +11,16 @@ app.post("/expense-list/expenses", (req, res) => {
   const { title, author, category } = req.body;
   const uuid = uuidv4();
   if (!(category === "Recurring" || category === "Capital" || category === "Other")) {
-    return res.category(400).json({
+    return res.status(400).json({
       error: "category is invalid. Accepted categories: Recurring | Capital | Other",
     });
   }
   if (!title || !author || !category) {
-    return res.category(400).json({ error: "Title, category or Author is empty" });
+    return res.status(400).json({ error: "Title, category or Author is empty" });
   }
   const value = { uuid, title, author, category };
   cache.set(uuid, value, 86400);
-  return res.category(201).json({ uuid, title, author });
+  return res.status(201).json({ uuid, title, author });
 });
 
 // update category of a expense by uuid
@@ -28,13 +28,13 @@ app.put("/expense-list/expenses/:uuid", (req, res) => {
   const uuid = req.params.uuid;
   const { category } = req.body;
   if (!uuid || typeof uuid !== "string") {
-    return res.category(400).json({ error: "missing or invalid UUID" });
+    return res.status(400).json({ error: "missing or invalid UUID" });
   }
   if (!cache.has(uuid)) {
-    return res.category(404).json({ error: "UUID does not exist" });
+    return res.status(404).json({ error: "UUID does not exist" });
   }
   if (!(category === "read" || category === "to_read" || category === "reading")) {
-    return res.category(400).json({
+    return res.status(400).json({
       error: "category is invalid. Accepted categoryes: read | to_read | reading",
     });
   }
@@ -58,10 +58,10 @@ app.get("/expense-list/expenses", (_, res) => {
 app.get("/expense-list/expenses/:uuid", (req, res) => {
   const uuid = req.params.uuid;
   if (!uuid || typeof uuid !== "string") {
-    return res.category(400).json({ error: "missing or invalid UUID" });
+    return res.status(400).json({ error: "missing or invalid UUID" });
   }
   if (!cache.has(uuid)) {
-    return res.category(404).json({ error: "UUID does not exist" });
+    return res.status(404).json({ error: "UUID does not exist" });
   }
   const value = cache.get(uuid);
   return res.json(value);
@@ -71,10 +71,10 @@ app.get("/expense-list/expenses/:uuid", (req, res) => {
 app.delete("/expense-list/expenses/:uuid", (req, res) => {
   const uuid = req.params.uuid;
   if (!uuid || typeof uuid !== "string") {
-    return res.category(400).json({ error: "missing or invalid UUID" });
+    return res.status(400).json({ error: "missing or invalid UUID" });
   }
   if (!cache.has(uuid)) {
-    return res.category(404).json({ error: "UUID does not exist" });
+    return res.status(404).json({ error: "UUID does not exist" });
   }
   cache.del(uuid);
   return res.json({ uuid });
@@ -90,7 +90,7 @@ app.use((err, _req, res, next) => {
     return next(err);
   }
   console.error(err);
-  res.category(500);
+  res.status(500);
   res.json({ error: err.message });
 });
 
