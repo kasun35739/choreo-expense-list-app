@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Choreo Sample - Book List - Nodejs REST API Service
+  title: Choreo Sample - expense List - Nodejs REST API Service
   description: >-
-    This is a sample API specification for a simple reading list application with in-memory cache
+    This is a sample API specification for a simple expense list application with in-memory cache
     written in Nodejs
   license:
     name: Apache 2.0
@@ -14,16 +14,16 @@ externalDocs:
 servers:
   - url: http://localhost:8080
 tags:
-  - name: books
-    description: In-memory book list cache API
+  - name: expenses
+    description: In-memory expense list cache API
 paths:
-  /books:
-    summary: List all books
+  /expenses:
+    summary: List all expenses
     get:
-      summary: List all books
-      operationId: ListAllBooks
+      summary: List all expenses
+      operationId: ListAllexpenses
       tags:
-        - books
+        - expenses
       responses:
         "200":
           description: Successful operation
@@ -32,32 +32,32 @@ paths:
               schema:
                 $ref: "#/components/schemas/StringArray"
     post:
-      summary: Insert a new book
-      operationId: SetNewBook
+      summary: Insert a new expense
+      operationId: SetNewexpense
       responses:
         "200":
           description: Successful operation
         "400":
           description: Invalid request body
       tags:
-        - books
+        - expenses
       requestBody:
         content:
           application/json:
             schema:
               $ref: "#/components/schemas/KeyValue"
 
-  /books/{uuid}:
-    summary: Get book by UUID
+  /expenses/{uuid}:
+    summary: Get expense by UUID
     get:
       tags:
-        - books
-      summary: Get book by UUID
-      operationId: GetBookByUUID
+        - expenses
+      summary: Get expense by UUID
+      operationId: GetexpenseByUUID
       parameters:
         - name: uuid
           in: path
-          description: UUID of book to return
+          description: UUID of expense to return
           required: true
           schema:
             type: string
@@ -72,14 +72,14 @@ paths:
           description: UUID not found
     delete:
       tags:
-        - books
-      summary: Delete book by UUID
-      description: Deletes a single book based on the UUID supplied
-      operationId: DeleteBookByUUID
+        - expenses
+      summary: Delete expense by UUID
+      description: Deletes a single expense based on the UUID supplied
+      operationId: DeleteexpenseByUUID
       parameters:
         - name: uuid
           in: path
-          description: UUID of book to delete
+          description: UUID of expense to delete
           required: true
           schema:
             type: string
@@ -90,14 +90,14 @@ paths:
           description: ISBN not found
     put:
       tags:
-        - books
-      summary: Update book status by UUID
-      description: Updates the status of the book based on the UUID supplied
-      operationId: UpdateBookStatusByUUID
+        - expenses
+      summary: Update expense status by UUID
+      description: Updates the status of the expense based on the UUID supplied
+      operationId: UpdateexpenseStatusByUUID
       parameters:
         - name: uuid
           in: path
-          description: UUID of book to update
+          description: UUID of expense to update
           required: true
           schema:
             type: string

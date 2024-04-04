@@ -6,8 +6,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// add a book - request body should contain a title, status and an author
-app.post("/reading-list/books", (req, res) => {
+// add a expense - request body should contain a title, status and an author
+app.post("/expense-list/expenses", (req, res) => {
   const { title, author, status } = req.body;
   const uuid = uuidv4();
   if (!(status === "read" || status === "to_read" || status === "reading")) {
@@ -23,8 +23,8 @@ app.post("/reading-list/books", (req, res) => {
   return res.status(201).json({ uuid, title, author });
 });
 
-// update status of a book by uuid
-app.put("/reading-list/books/:uuid", (req, res) => {
+// update status of a expense by uuid
+app.put("/expense-list/expenses/:uuid", (req, res) => {
   const uuid = req.params.uuid;
   const { status } = req.body;
   if (!uuid || typeof uuid !== "string") {
@@ -44,8 +44,8 @@ app.put("/reading-list/books/:uuid", (req, res) => {
   return res.json({ uuid, status });
 });
 
-// get the list of books
-app.get("/reading-list/books", (_, res) => {
+// get the list of expenses
+app.get("/expense-list/expenses", (_, res) => {
   const keys = cache.keys();
   const allData = {};
   for (const key of keys) {
@@ -54,8 +54,8 @@ app.get("/reading-list/books", (_, res) => {
   return res.json(allData);
 });
 
-// get a book by uuid
-app.get("/reading-list/books/:uuid", (req, res) => {
+// get a expense by uuid
+app.get("/expense-list/expenses/:uuid", (req, res) => {
   const uuid = req.params.uuid;
   if (!uuid || typeof uuid !== "string") {
     return res.status(400).json({ error: "missing or invalid UUID" });
@@ -67,8 +67,8 @@ app.get("/reading-list/books/:uuid", (req, res) => {
   return res.json(value);
 });
 
-// delete a book by uuid
-app.delete("/reading-list/books/:uuid", (req, res) => {
+// delete a expense by uuid
+app.delete("/expense-list/expenses/:uuid", (req, res) => {
   const uuid = req.params.uuid;
   if (!uuid || typeof uuid !== "string") {
     return res.status(400).json({ error: "missing or invalid UUID" });
