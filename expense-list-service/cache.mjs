@@ -12,20 +12,20 @@ const initialData = [
   {
     uuid: uuidv4(),
     title: 'The Fellowship of the Ring',
-    author: 'J.R.R. Tolkien',
-    status: 'read',
+    date: '02/04/2024',
+    category: 'Recurring',
   },
   {
     uuid: uuidv4(),
     title: 'The Two Towers',
-    author: 'J.R.R. Tolkien',
-    status: 'reading',
+    date: '03/04/2024',
+    category: 'Captial',
   },
   {
     uuid: uuidv4(),
     title: 'The Return of the King',
-    author: 'J.R.R. Tolkien',
-    status: 'to_read',
+    date: '04/04/2024',
+    category: 'Other',
   },
 ];
 

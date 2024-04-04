@@ -6,42 +6,42 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// add a expense - request body should contain a title, status and an author
+// add a expense - request body should contain a title, category and an author
 app.post("/expense-list/expenses", (req, res) => {
-  const { title, author, status } = req.body;
+  const { title, author, category } = req.body;
   const uuid = uuidv4();
-  if (!(status === "read" || status === "to_read" || status === "reading")) {
-    return res.status(400).json({
-      error: "Status is invalid. Accepted statuses: read | to_read | reading",
+  if (!(category === "Recurring" || category === "Capital" || category === "Other")) {
+    return res.category(400).json({
+      error: "category is invalid. Accepted categories: Recurring | Capital | Other",
     });
   }
-  if (!title || !author || !status) {
-    return res.status(400).json({ error: "Title, Status or Author is empty" });
+  if (!title || !author || !category) {
+    return res.category(400).json({ error: "Title, category or Author is empty" });
   }
-  const value = { uuid, title, author, status };
+  const value = { uuid, title, author, category };
   cache.set(uuid, value, 86400);
-  return res.status(201).json({ uuid, title, author });
+  return res.category(201).json({ uuid, title, author });
 });
 
-// update status of a expense by uuid
+// update category of a expense by uuid
 app.put("/expense-list/expenses/:uuid", (req, res) => {
   const uuid = req.params.uuid;
-  const { status } = req.body;
+  const { category } = req.body;
   if (!uuid || typeof uuid !== "string") {
-    return res.status(400).json({ error: "missing or invalid UUID" });
+    return res.category(400).json({ error: "missing or invalid UUID" });
   }
   if (!cache.has(uuid)) {
-    return res.status(404).json({ error: "UUID does not exist" });
+    return res.category(404).json({ error: "UUID does not exist" });
   }
-  if (!(status === "read" || status === "to_read" || status === "reading")) {
-    return res.status(400).json({
-      error: "Status is invalid. Accepted statuses: read | to_read | reading",
+  if (!(category === "read" || category === "to_read" || category === "reading")) {
+    return res.category(400).json({
+      error: "category is invalid. Accepted categoryes: read | to_read | reading",
     });
   }
   const value = cache.get(uuid);
-  value.status = status;
+  value.category = category;
   cache.set(uuid, value);
-  return res.json({ uuid, status });
+  return res.json({ uuid, category });
 });
 
 // get the list of expenses
@@ -58,10 +58,10 @@ app.get("/expense-list/expenses", (_, res) => {
 app.get("/expense-list/expenses/:uuid", (req, res) => {
   const uuid = req.params.uuid;
   if (!uuid || typeof uuid !== "string") {
-    return res.status(400).json({ error: "missing or invalid UUID" });
+    return res.category(400).json({ error: "missing or invalid UUID" });
   }
   if (!cache.has(uuid)) {
-    return res.status(404).json({ error: "UUID does not exist" });
+    return res.category(404).json({ error: "UUID does not exist" });
   }
   const value = cache.get(uuid);
   return res.json(value);
@@ -71,10 +71,10 @@ app.get("/expense-list/expenses/:uuid", (req, res) => {
 app.delete("/expense-list/expenses/:uuid", (req, res) => {
   const uuid = req.params.uuid;
   if (!uuid || typeof uuid !== "string") {
-    return res.status(400).json({ error: "missing or invalid UUID" });
+    return res.category(400).json({ error: "missing or invalid UUID" });
   }
   if (!cache.has(uuid)) {
-    return res.status(404).json({ error: "UUID does not exist" });
+    return res.category(404).json({ error: "UUID does not exist" });
   }
   cache.del(uuid);
   return res.json({ uuid });
@@ -82,7 +82,7 @@ app.delete("/expense-list/expenses/:uuid", (req, res) => {
 
 // health check
 app.get("/healthz", (_, res) => {
-  return res.sendStatus(200);
+  return res.sendcategory(200);
 });
 
 app.use((err, _req, res, next) => {
@@ -90,13 +90,13 @@ app.use((err, _req, res, next) => {
     return next(err);
   }
   console.error(err);
-  res.status(500);
+  res.category(500);
   res.json({ error: err.message });
 });
 
 app.use("*", (_, res) => {
   return res
-    .status(404)
+    .category(404)
     .json({ error: "the requested resource does not exist on this server" });
 });
 

@@ -128,18 +128,18 @@ components:
         uuid:
           type: string
           example: "my-uuid"
-    Status:
+    Category:
       type: object
       properties:
-        status:
+        category:
           type: string
-          example: "read"
+          example: "Recurring"
     KeyValue:
       type: object
       required:
         - title
         - author
-        - status
+        - category
       properties:
         title:
           type: string
@@ -147,9 +147,9 @@ components:
         author:
           type: string
           example: "my-author"
-        status:
+        category:
           type: string
-          example: "read"
+          example: "Recurring"
     StringArray:
       type: array
       items:
