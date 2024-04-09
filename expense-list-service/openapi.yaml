@@ -138,15 +138,15 @@ components:
       type: object
       required:
         - title
-        - author
+        - date
         - category
       properties:
         title:
           type: string
           example: "my-title"
-        author:
+        date:
           type: string
-          example: "my-author"
+          example: "my-date"
         category:
           type: string
           example: "Recurring"

@@ -6,21 +6,21 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// add a expense - request body should contain a title, category and an author
+// add a expense - request body should contain a title, category and an date
 app.post("/expense-list/expenses", (req, res) => {
-  const { title, author, category } = req.body;
+  const { title, date, category } = req.body;
   const uuid = uuidv4();
   if (!(category === "Recurring" || category === "Capital" || category === "Other")) {
     return res.status(400).json({
       error: "category is invalid. Accepted categories: Recurring | Capital | Other",
     });
   }
-  if (!title || !author || !category) {
-    return res.status(400).json({ error: "Title, category or Author is empty" });
+  if (!title || !date || !category) {
+    return res.status(400).json({ error: "Title, category or date is empty" });
   }
-  const value = { uuid, title, author, category };
+  const value = { uuid, title, date, category };
   cache.set(uuid, value, 86400);
-  return res.status(201).json({ uuid, title, author });
+  return res.status(201).json({ uuid, title, date });
 });
 
 // update category of a expense by uuid
