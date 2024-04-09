@@ -140,6 +140,7 @@ components:
         - title
         - date
         - category
+        - amount
       properties:
         title:
           type: string
@@ -150,6 +151,9 @@ components:
         category:
           type: string
           example: "Recurring"
+        amount:
+          type: string
+          example: "100"
     StringArray:
       type: array
       items:

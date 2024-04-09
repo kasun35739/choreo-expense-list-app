@@ -6,21 +6,21 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// add a expense - request body should contain a title, category and an date
+// add a expense - request body should contain a title, category, amount and an date
 app.post("/expense-list/expenses", (req, res) => {
-  const { title, date, category } = req.body;
+  const { title, date, category, amount } = req.body;
   const uuid = uuidv4();
   if (!(category === "Recurring" || category === "Capital" || category === "Other")) {
     return res.status(400).json({
       error: "category is invalid. Accepted categories: Recurring | Capital | Other",
     });
   }
-  if (!title || !date || !category) {
-    return res.status(400).json({ error: "Title, category or date is empty" });
+  if (!title || !date || !category || !amount) {
+    return res.status(400).json({ error: "Title, category, amount or date is empty" });
   }
-  const value = { uuid, title, date, category };
+  const value = { uuid, title, date, category, amount };
   cache.set(uuid, value, 86400);
-  return res.status(201).json({ uuid, title, date });
+  return res.status(201).json({ uuid, title, date, category, amount });
 });
 
 // update category of a expense by uuid
@@ -33,9 +33,9 @@ app.put("/expense-list/expenses/:uuid", (req, res) => {
   if (!cache.has(uuid)) {
     return res.status(404).json({ error: "UUID does not exist" });
   }
-  if (!(category === "read" || category === "to_read" || category === "reading")) {
+  if (!(category === "Recurring" || category === "Capital" || category === "Other")) {
     return res.status(400).json({
-      error: "category is invalid. Accepted categoryes: read | to_read | reading",
+      error: "category is invalid. Accepted categoryes: Recurring | Capital | Other",
     });
   }
   const value = cache.get(uuid);
