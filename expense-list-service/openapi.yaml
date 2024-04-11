@@ -128,7 +128,7 @@ components:
         uuid:
           type: string
           example: "my-uuid"
-    Category:
+    Status:
       type: object
       properties:
         category:
