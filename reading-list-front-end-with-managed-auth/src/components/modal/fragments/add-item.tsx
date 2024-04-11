@@ -37,6 +37,7 @@ export default function AddItem(props: AddItemProps) {
   const { isOpen, setIsOpen } = props;
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
+  const [amount, setAmount] = useState("");
   const [category, setCategory] = useState(categories[0]);
 
   const handleOnSubmit = () => {
@@ -45,6 +46,7 @@ export default function AddItem(props: AddItemProps) {
         title: name,
         date: date,
         category: category.name,
+        amount: amount,
       };
       const response = await postExpenses(payload);
       setIsOpen(false);
@@ -77,6 +79,18 @@ export default function AddItem(props: AddItemProps) {
             type="text"
             placeholder="Date"
             onChange={(e) => setDate(e.target.value)}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Amount
+          </label>
+          <input
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="date"
+            type="text"
+            placeholder="Amount"
+            onChange={(e) => setAmount(e.target.value)}
           />
         </div>
         <div className="mb-4">

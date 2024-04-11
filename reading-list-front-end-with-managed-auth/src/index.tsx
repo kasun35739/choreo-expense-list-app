@@ -156,7 +156,7 @@ export default function App() {
         <div className="container px-4 mx-auto flex justify-center">
           <div className="w-full max-w-lg px-2 py-16 sm:px-0 mb-20">
             <div className="flex justify-between">
-              <p className="text-4xl text-white mb-3 font-bold">Reading List</p>
+              <p className="text-4xl text-white mb-3 font-bold">Expenses List</p>
               <div className="container w-auto">
                 <button
                   className="float-right bg-black bg-opacity-20 p-2 rounded-md text-sm my-3 font-medium text-white h-10"

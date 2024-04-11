@@ -20,6 +20,7 @@ export interface Expense {
   title: string;
   date: string;
   category?: string;
+  amount: string;
 }
 
 export enum Category {
