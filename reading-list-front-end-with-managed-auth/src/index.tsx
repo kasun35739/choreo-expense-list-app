@@ -287,10 +287,10 @@ export default function App() {
                 {Object.values(readList).map((expenses: Expense[], idx) => (
                         {expenses.map((expense) => (
                           <tr>
-                            <td>{expenses.date}</td>
-                            <td>{expenses.title}</td>
+                            <td>{expense.date}</td>
+                            <td>{expense.title}</td>
                             <td>Cat</td>
-                            <td>{expenses.amount}</td>
+                            <td>{expense.amount}</td>
                         </tr>
                         ))}
 
