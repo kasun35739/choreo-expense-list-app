@@ -284,7 +284,7 @@ export default function App() {
                         </tr>
                     )
                 })} */}
-                {Object.values(readList).map((expenses: Expense[], idx) => (
+                {readList && (Object.values(readList).map((expenses: Expense[], idx) => (
                         expenses.map((expense) => (
                           <tr>
                             <td>{expense.date}</td>
@@ -294,7 +294,7 @@ export default function App() {
                         </tr>
                         ))
 
-                  ))}
+                  )))}
             </table>
             <AddItem isOpen={isAddItemOpen} setIsOpen={setIsAddItemOpen} />
           </div>
