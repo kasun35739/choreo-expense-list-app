@@ -258,7 +258,7 @@ export default function App() {
                 </button>
                 <button
                   className="float-right bg-black bg-opacity-20 p-2 rounded-md text-sm my-3 font-medium text-white w-10 h-10 mr-1"
-                  onClick={() => getReadingList2()}
+                  onClick={() => getReadingList()}
                 >
                   <ArrowPathIcon />
                 </button>
