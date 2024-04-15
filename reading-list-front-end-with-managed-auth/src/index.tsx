@@ -203,11 +203,11 @@ export default function App() {
                             <td>{expense.amount}</td>
                             <td>
                             <button
--                              className="float-right bg-red-500 text-white rounded-md self-center text-xs p-2 mr-2"
--                              onClick={() => handleDelete(expense.uuid!)}
--                            >
--                              Delete
--                            </button>
+                              className="float-right bg-red-500 text-white rounded-md self-center text-xs p-2 mr-2"
+                              onClick={() => handleDelete(expense.uuid!)}
+                            >
+                              Delete
+                            </button>
                             </td>
                         </tr>
                         ))
