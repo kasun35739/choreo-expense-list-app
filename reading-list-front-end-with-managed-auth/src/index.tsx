@@ -182,6 +182,7 @@ export default function App() {
                     <th>Description</th>
                     <th>Category</th>
                     <th>Amount</th>
+                    <th>Action</th>
                 </tr>
                 {/* {data.map((expenses) => {
                     return ( 
@@ -200,6 +201,14 @@ export default function App() {
                             <td>{expense.title}</td>
                             <td>{expense.category}</td>
                             <td>{expense.amount}</td>
+                            <td>
+                            <button
+-                              className="float-right bg-red-500 text-white rounded-md self-center text-xs p-2 mr-2"
+-                              onClick={() => handleDelete(expense.uuid!)}
+-                            >
+-                              Delete
+-                            </button>
+                            </td>
                         </tr>
                         ))
 
