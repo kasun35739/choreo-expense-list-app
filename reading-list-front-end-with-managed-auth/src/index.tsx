@@ -37,7 +37,7 @@ export default function App() {
   const [isAuthLoading, setIsAuthLoading] = useState(true);
   const [signedIn, setSignedIn] = useState(false);
   const [user, setUser] = useState<any>(null);
-  const [readList2, setReadList2] = useState<Expense[]>;
+  const [readList2, setReadList2] = useState<any>(null);
 
   useEffect(() => {
     if (Cookies.get('userinfo')) {
@@ -80,7 +80,7 @@ export default function App() {
       setIsLoading(true);
       getExpenses()
         .then((res) => {
-          setReadList2(res);
+          setReadList2(res.data);
           const grouped = groupBy(res.data, (item) => item.category);
           setReadList(grouped);
           setIsLoading(false);
