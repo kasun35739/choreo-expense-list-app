@@ -38,6 +38,7 @@ export default function App() {
   const [signedIn, setSignedIn] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [readList2, setReadList2] = useState<any>(null);
+  const data = [{ title: 'title1', date: '04/15/2024', category: 'Recurring', amount: '100' }];
 
   useEffect(() => {
     if (Cookies.get('userinfo')) {
@@ -80,7 +81,7 @@ export default function App() {
       setIsLoading(true);
       getExpenses()
         .then((res) => {
-          setReadList2(res.data);
+          //setReadList2(res.data);
           const grouped = groupBy(res.data, (item) => item.category);
           setReadList(grouped);
           setIsLoading(false);
@@ -271,7 +272,7 @@ export default function App() {
                     <th>Category</th>
                     <th>Amount</th>
                 </tr>
-                {readList2.map((item) => {
+                {data.map((item) => {
                     return (
                         <tr>
                             <td>{item.date}</td>
