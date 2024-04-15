@@ -82,7 +82,7 @@ export default function App() {
       getExpenses()
         .then((res) => {
           //setReadList2(res.data);
-          setData(res.data);
+          setData(res);
           const grouped = groupBy(res.data, (item) => item.category);
           setReadList(grouped);
           setIsLoading(false);
