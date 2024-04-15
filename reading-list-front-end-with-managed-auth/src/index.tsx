@@ -244,8 +244,7 @@ export default function App() {
       </div>
 
 
-
-{/*       <div className="py-3 md:py-6">
+      <div className="py-3 md:py-6">
         <div className="container px-4 mx-auto flex justify-center">
           <div className="w-full max-w-lg px-2 py-16 sm:px-0 mb-20">
             <div className="flex justify-between">
@@ -259,7 +258,7 @@ export default function App() {
                 </button>
                 <button
                   className="float-right bg-black bg-opacity-20 p-2 rounded-md text-sm my-3 font-medium text-white w-10 h-10 mr-1"
-                  onClick={() => getReadingList()}
+                  onClick={() => getReadingList2()}
                 >
                   <ArrowPathIcon />
                 </button>
@@ -267,16 +266,18 @@ export default function App() {
             </div>
             <table>
                 <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <td>Amount</th>
                 </tr>
-                {data.map((val, key) => {
+                {setReadList2.map((item) => {
                     return (
-                        <tr key={key}>
-                            <td>{val.name}</td>
-                            <td>{val.age}</td>
-                            <td>{val.gender}</td>
+                        <tr>
+                            <td>{item.date}</td>
+                            <td>{item.title}</td>
+                            <td>{item.category}</td>
+                            <td>{item.amount}</td>
                         </tr>
                     )
                 })}
@@ -284,7 +285,7 @@ export default function App() {
             <AddItem isOpen={isAddItemOpen} setIsOpen={setIsAddItemOpen} />
           </div>
         </div>
-      </div> */}
+      </div> 
 
 
     </div>
