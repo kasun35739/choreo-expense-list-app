@@ -199,7 +199,7 @@ export default function App() {
                           <tr>
                             <td>{expense.date}</td>
                             <td>{expense.title}</td>
-                            <td>Cat</td>
+                            <td>{idx}</td>
                             <td>{expense.amount}</td>
                         </tr>
                         ))
