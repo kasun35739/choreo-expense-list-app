@@ -284,6 +284,17 @@ export default function App() {
                         </tr>
                     )
                 })} */}
+                {Object.values(readList).map((expenses: Expense[], idx) => (
+                        {expenses.map((expense) => (
+                          <tr>
+                            <td>{expenses.date}</td>
+                            <td>{expenses.title}</td>
+                            <td>Cat</td>
+                            <td>{expenses.amount}</td>
+                        </tr>
+                        ))}
+
+                  ))}
             </table>
             <AddItem isOpen={isAddItemOpen} setIsOpen={setIsAddItemOpen} />
           </div>
