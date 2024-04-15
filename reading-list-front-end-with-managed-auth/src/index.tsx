@@ -157,6 +157,60 @@ export default function App() {
         </div>
       </nav>
 
+      { <div className="py-3 md:py-6">
+        <div className="container px-4 mx-auto flex justify-center">
+          <div className="w-full max-w-lg px-2 py-16 sm:px-0 mb-20">
+            <div className="flex justify-between">
+              <p className="text-4xl text-white mb-3 font-bold">Expenses List 2</p>
+              <div className="container w-auto">
+                <button
+                  className="float-right bg-black bg-opacity-20 p-2 rounded-md text-sm my-3 font-medium text-white h-10"
+                  onClick={() => setIsAddItemOpen(true)}
+                >
+                  + Add New
+                </button>
+                <button
+                  className="float-right bg-black bg-opacity-20 p-2 rounded-md text-sm my-3 font-medium text-white w-10 h-10 mr-1"
+                  onClick={() => getReadingList()}
+                >
+                  <ArrowPathIcon />
+                </button>
+              </div>
+            </div>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                </tr>
+                {/* {data.map((expenses) => {
+                    return ( 
+                        <tr>
+                            <td>{expenses.date}</td>
+                            <td>{expenses.title}</td>
+                            <td>{expenses.category}</td>
+                            <td>{expenses.amount}</td>
+                        </tr>
+                    )
+                })} */}
+                {readList && (Object.values(readList).map((expenses: Expense[], idx) => (
+                        expenses.map((expense) => (
+                          <tr>
+                            <td>{expense.date}</td>
+                            <td>{expense.title}</td>
+                            <td>Cat</td>
+                            <td>{expense.amount}</td>
+                        </tr>
+                        ))
+
+                  )))}
+            </table>
+            <AddItem isOpen={isAddItemOpen} setIsOpen={setIsAddItemOpen} />
+          </div>
+        </div>
+      </div>  }
+
       <div className="py-3 md:py-6">
         <div className="container px-4 mx-auto flex justify-center">
           <div className="w-full max-w-lg px-2 py-16 sm:px-0 mb-20">
@@ -247,59 +301,7 @@ export default function App() {
       </div>
 
 
-      { <div className="py-3 md:py-6">
-        <div className="container px-4 mx-auto flex justify-center">
-          <div className="w-full max-w-lg px-2 py-16 sm:px-0 mb-20">
-            <div className="flex justify-between">
-              <p className="text-4xl text-white mb-3 font-bold">Expenses List 2</p>
-              <div className="container w-auto">
-                <button
-                  className="float-right bg-black bg-opacity-20 p-2 rounded-md text-sm my-3 font-medium text-white h-10"
-                  onClick={() => setIsAddItemOpen(true)}
-                >
-                  + Add New
-                </button>
-                <button
-                  className="float-right bg-black bg-opacity-20 p-2 rounded-md text-sm my-3 font-medium text-white w-10 h-10 mr-1"
-                  onClick={() => getReadingList()}
-                >
-                  <ArrowPathIcon />
-                </button>
-              </div>
-            </div>
-            <table>
-                <tr>
-                    <th>Date</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Amount</th>
-                </tr>
-                {/* {data.map((expenses) => {
-                    return ( 
-                        <tr>
-                            <td>{expenses.date}</td>
-                            <td>{expenses.title}</td>
-                            <td>{expenses.category}</td>
-                            <td>{expenses.amount}</td>
-                        </tr>
-                    )
-                })} */}
-                {readList && (Object.values(readList).map((expenses: Expense[], idx) => (
-                        expenses.map((expense) => (
-                          <tr>
-                            <td>{expense.date}</td>
-                            <td>{expense.title}</td>
-                            <td>Cat</td>
-                            <td>{expense.amount}</td>
-                        </tr>
-                        ))
-
-                  )))}
-            </table>
-            <AddItem isOpen={isAddItemOpen} setIsOpen={setIsAddItemOpen} />
-          </div>
-        </div>
-      </div>  }
+      
 
 
     </div>
