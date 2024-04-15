@@ -274,12 +274,12 @@ export default function App() {
                     <th>Category</th>
                     <th>Amount</th>
                 </tr>
-                {Object.values(readList).map((expenses: Expense[], idx) {
+                {data.map((expenses) => {
                     return (
                         <tr>
                             <td>{expenses.date}</td>
                             <td>{expenses.title}</td>
-                            <td>{idx}</td>
+                            <td>{expenses.category}</td>
                             <td>{expenses.amount}</td>
                         </tr>
                     )
