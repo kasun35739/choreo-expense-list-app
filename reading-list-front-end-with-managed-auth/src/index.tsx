@@ -178,8 +178,8 @@ export default function App() {
               </div>
             </div>
             {readList && (
-              <Tab.Group>
-                <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
+              //<Tab.Group>
+                {/* <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
                   {Object.keys(readList).map((val) => (
                     <Tab
                       key={val}
@@ -196,7 +196,7 @@ export default function App() {
                       {val}
                     </Tab>
                   ))}
-                </Tab.List>
+                </Tab.List> */}
                 <Tab.Panels className="mt-2">
                   {Object.values(readList).map((expenses: Expense[], idx) => (
                     <Tab.Panel
@@ -239,7 +239,7 @@ export default function App() {
                     </Tab.Panel>
                   ))}
                 </Tab.Panels>
-              </Tab.Group>
+              // </Tab.Group>
             )}
             <AddItem isOpen={isAddItemOpen} setIsOpen={setIsAddItemOpen} />
           </div>
@@ -247,7 +247,7 @@ export default function App() {
       </div>
 
 
-      { <div className="py-3 md:py-6">
+{/*       { <div className="py-3 md:py-6">
         <div className="container px-4 mx-auto flex justify-center">
           <div className="w-full max-w-lg px-2 py-16 sm:px-0 mb-20">
             <div className="flex justify-between">
@@ -288,7 +288,7 @@ export default function App() {
             <AddItem isOpen={isAddItemOpen} setIsOpen={setIsAddItemOpen} />
           </div>
         </div>
-      </div>  }
+      </div>  } */}
 
 
     </div>
