@@ -274,7 +274,7 @@ export default function App() {
                     <th>Category</th>
                     <th>Amount</th>
                 </tr>
-                {data.map((expenses) => {
+                {/* {data.map((expenses) => {
                     return ( 
                         <tr>
                             <td>{expenses.date}</td>
@@ -283,7 +283,7 @@ export default function App() {
                             <td>{expenses.amount}</td>
                         </tr>
                     )
-                })}
+                })} */}
             </table>
             <AddItem isOpen={isAddItemOpen} setIsOpen={setIsAddItemOpen} />
           </div>
