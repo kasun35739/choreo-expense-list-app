@@ -271,7 +271,7 @@ export default function App() {
                     <th>Category</th>
                     <th>Amount</th>
                 </tr>
-                {setReadList2.map((item) => {
+                {readList2.map((item) => {
                     return (
                         <tr>
                             <td>{item.date}</td>
