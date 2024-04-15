@@ -90,6 +90,7 @@ export default function App() {
         .catch((e) => {
           console.log(e);
         });
+        setData(getExpenses());
     }
   }
 
@@ -246,7 +247,7 @@ export default function App() {
       </div>
 
 
-      <div className="py-3 md:py-6">
+      { <div className="py-3 md:py-6">
         <div className="container px-4 mx-auto flex justify-center">
           <div className="w-full max-w-lg px-2 py-16 sm:px-0 mb-20">
             <div className="flex justify-between">
@@ -287,7 +288,7 @@ export default function App() {
             <AddItem isOpen={isAddItemOpen} setIsOpen={setIsAddItemOpen} />
           </div>
         </div>
-      </div> 
+      </div>  }
 
 
     </div>
