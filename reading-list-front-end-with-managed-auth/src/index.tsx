@@ -176,7 +176,7 @@ export default function App() {
                 </button>
               </div>
             </div>
-            <table>
+            <table id="explist">
                 <tr>
                     <th>Date</th>
                     <th>Description</th>

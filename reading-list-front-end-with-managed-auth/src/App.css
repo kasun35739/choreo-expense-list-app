@@ -3,5 +3,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to right, #36d1dc, #5b86e5);
+  background-image: linear-gradient(to right, #14b489, #15af1c);
+
+  th {
+    padding: 10px;
+  }
+
+  td {
+    padding: 10px;
+  }
 }
