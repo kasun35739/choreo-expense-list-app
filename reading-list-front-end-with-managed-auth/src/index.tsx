@@ -275,7 +275,7 @@ export default function App() {
                     <th>Amount</th>
                 </tr>
                 {data.map((expenses) => {
-                    return (
+                    return ( 
                         <tr>
                             <td>{expenses.date}</td>
                             <td>{expenses.title}</td>
